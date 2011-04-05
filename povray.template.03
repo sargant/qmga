@@ -1,0 +1,166 @@
+// ... Povray Template
+#version 3.6;
+#include "colors.inc"
+#include "transforms.inc"
+
+//########## constant settings for discotic particles ############
+#declare camera_location = <0.0, 0.0,-15.0>;
+#declare camera_rotation_x = <0.0, 0.0, 0.0>;
+#declare camera_rotation_y = <0.0, 0.0, 0.0>;
+#declare camera_rotation_z = <0.0, 0.0, 0.0>;
+#declare light_position  = <0.0, 0.0,-15.0>;
+#declare backgroundcolor = <0.0, 0.0, 0.0>;
+#declare show_box = 1;
+#declare boxcolor = <0.5, 0.5, 0.5>;
+#declare boxradius = 0.1;
+#declare bbox_01a = < -5.0, -5.0 , -5.0>;
+#declare bbox_01b = <  5.0, -5.0 , -5.0>;
+#declare bbox_02a = < -5.0, -5.0 , -5.0>;
+#declare bbox_02b = < -5.0,  5.0 , -5.0>;
+#declare bbox_03a = < -5.0, -5.0 , -5.0>;
+#declare bbox_03b = < -5.0, -5.0 ,  5.0>;
+#declare bbox_04a = < -5.0, -5.0 ,  5.0>;
+#declare bbox_04b = < -5.0,  5.0 ,  5.0>;
+#declare bbox_05a = < -5.0, -5.0 ,  5.0>;
+#declare bbox_05b = <  5.0, -5.0 ,  5.0>;
+#declare bbox_06a = <  5.0, -5.0 ,  5.0>;
+#declare bbox_06b = <  5.0,  5.0 ,  5.0>;
+#declare bbox_07a = < -5.0,  5.0 ,  5.0>;
+#declare bbox_07b = <  5.0,  5.0 ,  5.0>;
+#declare bbox_08a = < -5.0,  5.0 , -5.0>;
+#declare bbox_08b = < -5.0,  5.0 ,  5.0>;
+#declare bbox_09a = <  5.0, -5.0 , -5.0>;
+#declare bbox_09b = <  5.0, -5.0 ,  5.0>;
+#declare bbox_10a = <  5.0,  5.0 , -5.0>;
+#declare bbox_10b = <  5.0, -5.0 , -5.0>;
+#declare bbox_11a = <  5.0,  5.0 , -5.0>;
+#declare bbox_11b = <  5.0,  5.0 ,  5.0>;
+#declare bbox_12a = < -5.0,  5.0 , -5.0>;
+#declare bbox_12b = <  5.0,  5.0 , -5.0>;
+#declare zoom = 1;
+#declare ambient_l = < 1.0, 1.0, 1.0>;
+#declare diffuse_l = 1;
+#declare specular_l = 1;
+#declare shininess = 1;
+
+// declare texture for discotic particles
+#macro object_texture( Color )
+  texture
+    {
+      pigment
+        {
+          color Color
+        }
+       // glossy reflection
+      finish
+        {
+	  ambient rgb ambient_l
+	  diffuse diffuse_l
+          // specular-parameter for strength, roughtness for size
+          specular specular_l 
+          roughness shininess
+        }
+    }
+#end
+
+// define a ellipsoidal particle
+#macro ellipsoid( Position, Rotation, Color, Scale )
+  sphere
+    {     
+      // Generated in <X,Y,Z>
+      <0, 0, 0>    
+
+      // radius of sphere
+      0.5        
+
+      // scale sphere by <X Y Z>
+      scale Scale
+
+      // rotate by <X Y Z> (degree) 
+      Reorient_Trans(<0,0,1>, Rotation)    
+  
+      // translate to position <-X -Y -Z>
+      translate Position 
+
+      // texture
+      object_texture(Color)
+    }
+#end
+
+// define a sphearocylindrical particle
+#macro sphearocylinder( Position, Rotation, Color, Radius, Length )
+  merge
+    {
+      cylinder{ <0.0, 0.0, -0.5*Length>, <0.0, 0.0, 0.5*Length>, Radius }
+      sphere  { <0.0, 0.0, -0.5*Length> Radius }
+      sphere  { <0.0, 0.0,  0.5*Length> Radius }
+      Reorient_Trans(<0,0,1>, Rotation)
+      translate Position
+      object_texture(Color)
+    }
+#end
+
+#macro boxedge( bbox_xa, bbox_xb, Color, Radius  )
+  merge
+    {
+      cylinder { bbox_xa, bbox_xb, Radius }
+      sphere   { bbox_xa Radius }
+      sphere   { bbox_xb Radius }
+      object_texture(Color)
+    }
+#end
+
+//########## settings for camera/light and brightness ############
+
+global_settings
+{
+  // Adjust general gamma (0 for all white)
+  assumed_gamma 1.8
+}
+// ----------------------------------------
+
+camera 
+{
+  orthographic
+  location  camera_location
+  direction 1.5*z
+
+  right zoom*x*image_width/image_height
+  up <0, zoom, 0>
+
+  look_at   <0.0, 0.0, 0.0>
+  rotate    camera_rotation_z
+  rotate    camera_rotation_y
+  rotate    camera_rotation_x
+}
+
+light_source
+{
+  <0, 0, 0>            // light's position (translated below)
+  color rgb <1, 1, 1>  // light's color
+  translate light_position
+  rotate    camera_rotation_z
+  rotate    camera_rotation_y
+  rotate    camera_rotation_x
+  parallel
+}
+
+//####### bounding box ###########################################
+background { backgroundcolor }
+
+//####### bounding box ###########################################
+#if( show_box )
+  boxedge( bbox_01a, bbox_01b, boxcolor, boxradius )
+  boxedge( bbox_02a, bbox_02b, boxcolor, boxradius )
+  boxedge( bbox_03a, bbox_03b, boxcolor, boxradius )
+  boxedge( bbox_04a, bbox_04b, boxcolor, boxradius )
+  boxedge( bbox_05a, bbox_05b, boxcolor, boxradius )
+  boxedge( bbox_06a, bbox_06b, boxcolor, boxradius )
+  boxedge( bbox_07a, bbox_07b, boxcolor, boxradius )
+  boxedge( bbox_08a, bbox_08b, boxcolor, boxradius )
+  boxedge( bbox_09a, bbox_09b, boxcolor, boxradius )
+  boxedge( bbox_10a, bbox_10b, boxcolor, boxradius )
+  boxedge( bbox_11a, bbox_11b, boxcolor, boxradius )
+  boxedge( bbox_12a, bbox_12b, boxcolor, boxradius )
+#end
+//####### particle list ##########################################

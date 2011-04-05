@@ -1,0 +1,3645 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MainForm</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>MainForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>851</width>
+            <height>812</height>
+        </rect>
+    </property>
+    <property name="font">
+        <font>
+            <family>Bitstream Charter</family>
+        </font>
+    </property>
+    <property name="caption">
+        <string>QMGA -- Main Window</string>
+    </property>
+    <property name="icon">
+        <pixmap>mainform.png</pixmap>
+    </property>
+    <hbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>glFrame</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>100</width>
+                    <height>100</height>
+                </size>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+        </widget>
+    </hbox>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBar</cstring>
+    </property>
+    <item text="&amp;File" name="fileMenu">
+        <action name="action_fileOpen"/>
+        <action name="action_fileSave"/>
+        <action name="action_fileSaveAs"/>
+        <action name="action_saveHistogram"/>
+        <separator/>
+        <action name="action_openHist_1"/>
+        <action name="action_openHist_2"/>
+        <action name="action_openHist_3"/>
+        <action name="action_openHist_4"/>
+        <separator/>
+        <action name="action_fileExit"/>
+    </item>
+    <item text="&amp;Edit" name="editMenu">
+        <action name="action_useColorByModel"/>
+        <action name="action_useDirector"/>
+        <action name="action_useUserDefined"/>
+        <separator/>
+        <action name="action_togglePixel"/>
+        <separator/>
+        <action name="action_togglePng"/>
+        <action name="action_toggleEps"/>
+        <separator/>
+        <action name="action_colorForm"/>
+        <action name="action_povrayForm"/>
+    </item>
+    <item text="V&amp;iew" name="View">
+        <action name="action_toggleFullRender"/>
+        <action name="action_toggleAxes"/>
+        <action name="action_toggleColormap"/>
+        <action name="action_toggleBoundingBox"/>
+        <separator/>
+        <action name="action_loadModelsFile"/>
+        <action name="action_saveModelsFile"/>
+        <action name="action_objectParams"/>
+        <action name="action_toggleObjectsChangable"/>
+        <action name="action_toggleObjects"/>
+        <separator/>
+        <action name="action_toggleSlice"/>
+        <action name="action_toggleFold"/>
+        <separator/>
+        <action name="action_toggleLOD"/>
+        <action name="action_toggleOptimized"/>
+    </item>
+    <item text="Vi&amp;deo" name="Video">
+        <action name="action_videoStart"/>
+        <action name="action_videoPause"/>
+        <action name="action_videoStop"/>
+        <separator/>
+        <action name="action_videoBackward"/>
+        <action name="action_videoForward"/>
+        <separator/>
+        <action name="action_videoCapture"/>
+    </item>
+    <item text="&amp;Toolbars" name="Toolbars">
+        <action name="action_togglePosition"/>
+        <action name="action_toggleColor"/>
+        <action name="action_toggleFps"/>
+        <action name="action_toggleModel1"/>
+        <action name="action_toggleModel2"/>
+        <action name="action_toggleOpenSave"/>
+        <action name="action_toggleSliceWindow"/>
+        <action name="action_toggleTreeView"/>
+        <action name="action_toggleView"/>
+        <action name="action_toggleVideoSettings"/>
+        <action name="action_toggleVideoControls"/>
+    </item>
+    <item text="&amp;Help" name="helpMenu">
+        <action name="action_helpAbout"/>
+    </item>
+</menubar>
+<toolbars>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_opensave</cstring>
+        </property>
+        <property name="frameShape">
+            <enum>ToolBarPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Raised</enum>
+        </property>
+        <property name="movingEnabled">
+            <bool>true</bool>
+        </property>
+        <property name="horizontallyStretchable">
+            <bool>true</bool>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Open/Save</string>
+        </property>
+        <action name="action_fileOpen"/>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEditFileOpen</cstring>
+            </property>
+            <property name="focusPolicy">
+                <enum>StrongFocus</enum>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignRight</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Path to Current Configurationfile</string>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <item>
+                <property name="text">
+                    <string>gbmega</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>lammps1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>lammps2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>gbmegaBiax</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>cinacchi</string>
+                </property>
+            </item>
+            <property name="name">
+                <cstring>comboBox_fileType</cstring>
+            </property>
+        </widget>
+        <separator/>
+        <action name="action_povrayForm"/>
+        <separator/>
+        <action name="action_fileSave"/>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEditPix1</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>50</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>50</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Width of the Snapshot in Pixels.</string>
+            </property>
+        </widget>
+        <action name="action_togglePixel"/>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEditPix2</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>50</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>50</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Height of the Snapshot in Pixels.</string>
+            </property>
+        </widget>
+        <action name="action_togglePng"/>
+        <action name="action_toggleEps"/>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_snapShot</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignRight</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Path to the Last Saved File</string>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_color</cstring>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Color</string>
+        </property>
+        <action name="action_colorForm"/>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pushButton_x</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="text">
+                <string>x</string>
+            </property>
+            <property name="flat">
+                <bool>false</bool>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Set Color for X-Axis</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pushButton_y</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="text">
+                <string>y</string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Set Color for X-Axis</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pushButton_z</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="text">
+                <string>z</string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Set Color for X-Axis</string>
+            </property>
+        </widget>
+        <separator/>
+        <action name="action_useDirector"/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_directorX</cstring>
+            </property>
+            <property name="text">
+                <string>x=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_directorX</cstring>
+            </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="paletteBackgroundColor">
+                <color>
+                    <red>220</red>
+                    <green>220</green>
+                    <blue>220</blue>
+                </color>
+            </property>
+            <property name="focusPolicy">
+                <enum>NoFocus</enum>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>X-Value of Director</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_directorY</cstring>
+            </property>
+            <property name="text">
+                <string>y=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_directorY</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="paletteBackgroundColor">
+                <color>
+                    <red>220</red>
+                    <green>220</green>
+                    <blue>220</blue>
+                </color>
+            </property>
+            <property name="focusPolicy">
+                <enum>NoFocus</enum>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Y-Value of Director</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_directorZ</cstring>
+            </property>
+            <property name="text">
+                <string>z=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_directorZ</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="paletteBackgroundColor">
+                <color>
+                    <red>220</red>
+                    <green>220</green>
+                    <blue>220</blue>
+                </color>
+            </property>
+            <property name="focusPolicy">
+                <enum>NoFocus</enum>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Z-Value of Director</string>
+            </property>
+        </widget>
+        <separator/>
+        <action name="action_useUserDefined"/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_userX</cstring>
+            </property>
+            <property name="text">
+                <string>x=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_userX</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>X-Value of User Defined Colorization Axis</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_userY</cstring>
+            </property>
+            <property name="text">
+                <string>y=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_userY</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Y-Value of User Defined Colorization Axis</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_userZ</cstring>
+            </property>
+            <property name="text">
+                <string>z=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_userZ</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Z-Value of User Defined Colorization Axis</string>
+            </property>
+        </widget>
+        <separator/>
+        <action name="action_useColorByModel"/>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_view</cstring>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- View</string>
+        </property>
+        <action name="action_toggleFullRender"/>
+        <action name="action_toggleAxes"/>
+        <action name="action_toggleColormap"/>
+        <action name="action_toggleBoundingBox"/>
+        <separator/>
+        <action name="action_loadModelsFile"/>
+        <action name="action_saveModelsFile"/>
+        <action name="action_objectParams"/>
+        <action name="action_toggleObjectsChangable"/>
+        <action name="action_toggleObjects"/>
+        <separator/>
+        <action name="action_toggleSlice"/>
+        <action name="action_toggleFold"/>
+        <separator/>
+        <action name="action_toggleOptimized"/>
+        <action name="action_toggleLOD"/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_boxGrid</cstring>
+            </property>
+            <property name="text">
+                <string>box grid=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_boxCount</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>30</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="text">
+                <string>20</string>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Override the Box Grid used for Optimization. Main Bounding Box is divided into x*x*x Subboxes.</string>
+            </property>
+        </widget>
+        <widget class="Spacer">
+            <property name="name">
+                <cstring>spacer3</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>5</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <item>
+                <property name="text">
+                    <string>1 - poor</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>3</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>4</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>5 - best</string>
+                </property>
+            </item>
+            <property name="name">
+                <cstring>comboBox_quality</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>85</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="currentItem">
+                <number>2</number>
+            </property>
+            <property name="sizeLimit">
+                <number>5</number>
+            </property>
+            <property name="maxCount">
+                <number>5</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Sets the Detail Level of the Shown Items</string>
+            </property>
+        </widget>
+        <separator/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_lineSize</cstring>
+            </property>
+            <property name="text">
+                <string>line size=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_lineSize</cstring>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>100</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Sets the Width of All Lines, Like Bounding Box. This is a Relative Value Depending on the Opengl Version.</string>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_model1</cstring>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Model Parameter - Model 1</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="text">
+                <string>Model1:</string>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <property name="name">
+                <cstring>comboBox_model1</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_x</cstring>
+            </property>
+            <property name="text">
+                <string>x=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_x</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Scaling of the first Model's X-Axis</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_y</cstring>
+            </property>
+            <property name="text">
+                <string>y=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_y</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Scaling of the first Model's Y-Axis</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_z</cstring>
+            </property>
+            <property name="text">
+                <string>z=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_z</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Scaling of the first Model's Z-Axis</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_dia</cstring>
+            </property>
+            <property name="text">
+                <string>diameter=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_dia</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Scaling of the first Model's Cylinder Diameter</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_len</cstring>
+            </property>
+            <property name="text">
+                <string>length=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_len</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Scaling of the first Model's Cylinder Length</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_radS1</cstring>
+            </property>
+            <property name="text">
+                <string>radSphere=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_radS1</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="text">
+                <string>.</string>
+            </property>
+            <property name="maxLength">
+                <number>5</number>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_radC</cstring>
+            </property>
+            <property name="text">
+                <string>radCircle=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_radC</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_radS2</cstring>
+            </property>
+            <property name="text">
+                <string>radSphere=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_radS2</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_cut</cstring>
+            </property>
+            <property name="text">
+                <string>cut=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_cut</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_radS3</cstring>
+            </property>
+            <property name="text">
+                <string>radSphere=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_radS3</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>5</number>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model1_ang</cstring>
+            </property>
+            <property name="text">
+                <string>opening angle=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model1_ang</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>5</number>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_model2</cstring>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Model Parameter - Model 2</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>Box</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="text">
+                <string>Model2:</string>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <property name="name">
+                <cstring>comboBox_model2</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_x</cstring>
+            </property>
+            <property name="text">
+                <string>x=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_x</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_y</cstring>
+            </property>
+            <property name="text">
+                <string>y=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_y</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_z</cstring>
+            </property>
+            <property name="text">
+                <string>z=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_z</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_dia</cstring>
+            </property>
+            <property name="text">
+                <string>diameter=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_dia</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_len</cstring>
+            </property>
+            <property name="text">
+                <string>length=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_len</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="inputMask">
+                <string>00.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_radS1</cstring>
+            </property>
+            <property name="text">
+                <string>radSphere=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_radS1</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_radC</cstring>
+            </property>
+            <property name="text">
+                <string>radCircle=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_radC</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_radS2</cstring>
+            </property>
+            <property name="text">
+                <string>radSphere=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_radS2</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_cut</cstring>
+            </property>
+            <property name="text">
+                <string>cut=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_cut</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_radS3</cstring>
+            </property>
+            <property name="text">
+                <string>radSphere=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_radS3</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>5</number>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_model2_ang</cstring>
+            </property>
+            <property name="text">
+                <string>opening angle=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_model2_ang</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>40</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>5</number>
+            </property>
+            <property name="inputMask">
+                <string>#0.00; </string>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_fps</cstring>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Frames/s</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_fps</cstring>
+            </property>
+            <property name="text">
+                <string>fps=</string>
+            </property>
+        </widget>
+        <widget class="QLCDNumber">
+            <property name="name">
+                <cstring>lCDNumber_fps</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>22</height>
+                </size>
+            </property>
+            <property name="numDigits">
+                <number>5</number>
+            </property>
+            <property name="mode">
+                <enum>Dec</enum>
+            </property>
+            <property name="segmentStyle">
+                <enum>Flat</enum>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Shows the current fps value. (1/time to render last frame)</string>
+            </property>
+        </widget>
+        <widget class="Spacer">
+            <property name="name">
+                <cstring>spacer2</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Fixed</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>15</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_meanFps</cstring>
+            </property>
+            <property name="text">
+                <string>&lt;fps&gt;=</string>
+            </property>
+        </widget>
+        <widget class="QLCDNumber">
+            <property name="name">
+                <cstring>lCDNumber_meanFps</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>45</width>
+                    <height>22</height>
+                </size>
+            </property>
+            <property name="segmentStyle">
+                <enum>Flat</enum>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Shows the mean over all fps values until reset. (click lcd to reset)</string>
+            </property>
+        </widget>
+        <widget class="Spacer">
+            <property name="name">
+                <cstring>spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Fixed</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>5</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pushButton_meanFps</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>40</width>
+                    <height>15</height>
+                </size>
+            </property>
+            <property name="text">
+                <string>reset</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>checkBox_benchmark</cstring>
+            </property>
+            <property name="text">
+                <string>benchmark</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel2</cstring>
+            </property>
+            <property name="text">
+                <string>#frames:</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_benchmark</cstring>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>9999</number>
+            </property>
+            <property name="minValue">
+                <number>1</number>
+            </property>
+            <property name="value">
+                <number>500</number>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_position</cstring>
+        </property>
+        <property name="resizeEnabled">
+            <bool>false</bool>
+        </property>
+        <property name="movingEnabled">
+            <bool>true</bool>
+        </property>
+        <property name="horizontallyStretchable">
+            <bool>false</bool>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Camera Position</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>pixmapLabel_alpha</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+            <property name="pixmap">
+                <pixmap>alpha_crop.png</pixmap>
+            </property>
+            <property name="scaledContents">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_alpha</cstring>
+            </property>
+            <property name="text">
+                <string>=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_rotx</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>42</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>359</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Combined Rotation Around X-Axis</string>
+            </property>
+        </widget>
+        <widget class="QDial">
+            <property name="name">
+                <cstring>dial_rotX</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="notchTarget">
+                <number>40</number>
+            </property>
+            <property name="notchesVisible">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>359</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Rotation Around X-Axis</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_rotX</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>3</number>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Value for Rotation Around X-Axis bye Return Press</string>
+            </property>
+        </widget>
+        <separator/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>pixmapLabel_beta</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="pixmap">
+                <pixmap>beta_crop.png</pixmap>
+            </property>
+            <property name="scaledContents">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_beta</cstring>
+            </property>
+            <property name="text">
+                <string>=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_roty</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>42</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>359</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Combined Rotation Around Y-Axis</string>
+            </property>
+        </widget>
+        <widget class="QDial">
+            <property name="name">
+                <cstring>dial_rotY</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="notchTarget">
+                <number>40</number>
+            </property>
+            <property name="notchesVisible">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>359</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Combined Rotation Around Y-Axis</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_rotY</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>30</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>3</number>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Value for Rotation Around Y-Axis bye Return Press</string>
+            </property>
+        </widget>
+        <separator/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>pixmapLabel_gamma</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+            <property name="pixmap">
+                <pixmap>gamma_crop.png</pixmap>
+            </property>
+            <property name="scaledContents">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_gamma</cstring>
+            </property>
+            <property name="text">
+                <string>=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_rotz</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>42</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>359</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Combined Rotation Around Z-Axis</string>
+            </property>
+        </widget>
+        <widget class="QDial">
+            <property name="name">
+                <cstring>dial_rotZ</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="notchTarget">
+                <number>40</number>
+            </property>
+            <property name="notchesVisible">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>359</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Combined Rotation Around Z-Axis</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_rotZ</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>30</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxLength">
+                <number>3</number>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Value for Rotation Around Z-Axis bye Return Press</string>
+            </property>
+        </widget>
+        <separator/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_zoom</cstring>
+            </property>
+            <property name="text">
+                <string>zoom=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_zoom</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>42</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="maxValue">
+                <number>999</number>
+            </property>
+            <property name="minValue">
+                <number>1</number>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Zoom Value</string>
+            </property>
+        </widget>
+        <action name="action_translate"/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel9</cstring>
+            </property>
+            <property name="text">
+                <string>x=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_translateX</cstring>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>999</number>
+            </property>
+            <property name="minValue">
+                <number>-999</number>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel10</cstring>
+            </property>
+            <property name="text">
+                <string>y=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_translateY</cstring>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>999</number>
+            </property>
+            <property name="minValue">
+                <number>-999</number>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel11</cstring>
+            </property>
+            <property name="text">
+                <string>z=</string>
+            </property>
+        </widget>
+        <widget class="QSpinBox">
+            <property name="name">
+                <cstring>spinBox_translateZ</cstring>
+            </property>
+            <property name="wrapping">
+                <bool>true</bool>
+            </property>
+            <property name="maxValue">
+                <number>999</number>
+            </property>
+            <property name="minValue">
+                <number>-999</number>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_videoSettings</cstring>
+        </property>
+        <property name="horizontallyStretchable">
+            <bool>true</bool>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Video Settings</string>
+        </property>
+        <action name="action_videoFileOpen"/>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_videoFile</cstring>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignRight</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Path to Current Video Configurationfile</string>
+            </property>
+        </widget>
+        <separator/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_videoStart</cstring>
+            </property>
+            <property name="text">
+                <string>start=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_videoStart</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>70</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Choose the Number of the First File to Show</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_videoStop</cstring>
+            </property>
+            <property name="text">
+                <string>stop=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_videoStop</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>70</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Choose the Number of the File to Stop at</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_videoStep</cstring>
+            </property>
+            <property name="text">
+                <string>step=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_videoStep</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>70</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Choose How Many Filenumbers to Skip Between Frames</string>
+            </property>
+        </widget>
+        <separator/>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel_videoNumDigits</cstring>
+            </property>
+            <property name="text">
+                <string>#digits=</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEdit_videoNumDigits</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>30</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="acceptDrops">
+                <bool>false</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Defines the Number of Digits Forming the Tag on Captured Frames</string>
+            </property>
+        </widget>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar_videoControls</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>234</y>
+                <width>851</width>
+                <height>32</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>ToolBarPanel</enum>
+        </property>
+        <property name="resizeEnabled">
+            <bool>false</bool>
+        </property>
+        <property name="horizontallyStretchable">
+            <bool>true</bool>
+        </property>
+        <property name="label">
+            <string>QMGA Toolbar -- Video Controls</string>
+        </property>
+        <action name="action_videoCapture"/>
+        <separator/>
+        <action name="action_videoBackward"/>
+        <action name="action_videoForward"/>
+        <separator/>
+        <action name="action_videoStart"/>
+        <action name="action_videoPause"/>
+        <action name="action_videoStop"/>
+        <separator/>
+        <widget class="QSlider">
+            <property name="name">
+                <cstring>slider_videoProgress</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="focusPolicy">
+                <enum>ClickFocus</enum>
+            </property>
+            <property name="minValue">
+                <number>0</number>
+            </property>
+            <property name="value">
+                <number>1</number>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget class="QLCDNumber">
+            <property name="name">
+                <cstring>lCDNumber_currentVideoFile</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32767</width>
+                    <height>22</height>
+                </size>
+            </property>
+            <property name="numDigits">
+                <number>10</number>
+            </property>
+            <property name="segmentStyle">
+                <enum>Flat</enum>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Shows the Number of the Current File.</string>
+            </property>
+        </widget>
+    </toolbar>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>action_fileOpen</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>fileopen</iconset>
+        </property>
+        <property name="text">
+            <string>Open</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Open</string>
+        </property>
+        <property name="toolTip">
+            <string>Open (Ctrl+O)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+O</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_fileSave</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>filesave</iconset>
+        </property>
+        <property name="text">
+            <string>Save</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Save</string>
+        </property>
+        <property name="toolTip">
+            <string>Save (Ctrl+S)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_fileSaveAs</cstring>
+        </property>
+        <property name="text">
+            <string>Save As</string>
+        </property>
+        <property name="menuText">
+            <string>Save &amp;As...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_fileExit</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>Exit</string>
+        </property>
+        <property name="menuText">
+            <string>E&amp;xit</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_helpAbout</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About</string>
+        </property>
+        <property name="toolTip">
+            <string>Openes About Dialog</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_togglePixel</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>x2.png</iconset>
+        </property>
+        <property name="text">
+            <string>Toggle Pixelsize</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Toggle Pixelsize</string>
+        </property>
+        <property name="toolTip">
+            <string>Toggle Pixelsize (Ctrl+T)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+T</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleEps</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>eps.png</iconset>
+        </property>
+        <property name="text">
+            <string>Toggle Save as .eps</string>
+        </property>
+        <property name="menuText">
+            <string>Toggle Save as .&amp;eps</string>
+        </property>
+        <property name="toolTip">
+            <string>Toggle Save as .eps (Ctrl+E)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+E</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_togglePng</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>png.png</iconset>
+        </property>
+        <property name="text">
+            <string>Toggle Save as .png</string>
+        </property>
+        <property name="menuText">
+            <string>Toggle Save as .&amp;png</string>
+        </property>
+        <property name="toolTip">
+            <string>Toggle Save as .png (Ctrl+P)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+P</string>
+        </property>
+    </action>
+    <actiongroup>
+        <property name="name">
+            <cstring>actionGroup_colorAxis</cstring>
+        </property>
+        <property name="text">
+            <string>ActionGroup</string>
+        </property>
+        <property name="usesDropDown">
+            <bool>false</bool>
+        </property>
+        <action>
+            <property name="name">
+                <cstring>action_useDirector</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="on">
+                <bool>true</bool>
+            </property>
+            <property name="iconSet">
+                <iconset>D.png</iconset>
+            </property>
+            <property name="text">
+                <string>Use Director</string>
+            </property>
+            <property name="menuText">
+                <string>Use &amp;Director</string>
+            </property>
+            <property name="toolTip">
+                <string>Use Director for Colorization (Ctrl+D)</string>
+            </property>
+            <property name="accel">
+                <string>Ctrl+D</string>
+            </property>
+        </action>
+        <action>
+            <property name="name">
+                <cstring>action_useUserDefined</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="iconSet">
+                <iconset>U.png</iconset>
+            </property>
+            <property name="text">
+                <string>Use User defined</string>
+            </property>
+            <property name="menuText">
+                <string>Use &amp;User defined</string>
+            </property>
+            <property name="toolTip">
+                <string>Use User Defined Axis for Colorization (Ctrl+U)</string>
+            </property>
+            <property name="statusTip">
+                <string>Use User Defined Axis for Colorization (Ctrl+U)</string>
+            </property>
+            <property name="accel">
+                <string>Ctrl+U</string>
+            </property>
+        </action>
+        <action>
+            <property name="name">
+                <cstring>action_useColorByModel</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="iconSet">
+                <iconset>M.png</iconset>
+            </property>
+            <property name="text">
+                <string>Use Color by Model</string>
+            </property>
+            <property name="toolTip">
+                <string>Use Model for Colorization (Ctrl+M)</string>
+            </property>
+            <property name="accel">
+                <string>Ctrl+M</string>
+            </property>
+        </action>
+    </actiongroup>
+    <action>
+        <property name="name">
+            <cstring>action_toggleFullRender</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>full.png</iconset>
+        </property>
+        <property name="text">
+            <string>Full Render</string>
+        </property>
+        <property name="menuText">
+            <string>Full &amp;Render</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Full Render Mode (Shift+R)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+R</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleAxes</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>axes.png</iconset>
+        </property>
+        <property name="text">
+            <string>Show Axes</string>
+        </property>
+        <property name="menuText">
+            <string>Show &amp;Axes</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Axes (Shift+A)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+A</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleColormap</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>map.png</iconset>
+        </property>
+        <property name="text">
+            <string>Show Colormap</string>
+        </property>
+        <property name="menuText">
+            <string>Show &amp;Colormap</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Colormap (Shift+C)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+C</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleOptimized</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>optimization.png</iconset>
+        </property>
+        <property name="text">
+            <string>Optimization</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Optimization</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Optimization For Large Amounts of Items (Shift+O)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+O</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleSlice</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>knife.png</iconset>
+        </property>
+        <property name="text">
+            <string>Sliced</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Sliced</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Sliced Representation (Shift+S)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleFold</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>fold.png</iconset>
+        </property>
+        <property name="text">
+            <string>Folded View</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Folded View</string>
+        </property>
+        <property name="toolTip">
+            <string>Toggle Un/Folded View (Shift+F)</string>
+        </property>
+        <property name="statusTip">
+            <string>Toggle Un/Folded View (Ctrl+F)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+F</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleModel1</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Model 1</string>
+        </property>
+        <property name="menuText">
+            <string>Model &amp;1</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Model 1 Toolbar (Alt+1)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+1</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleColor</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Color</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Color</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Color Toolbar (Alt+C)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+C</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleView</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>View</string>
+        </property>
+        <property name="menuText">
+            <string>Vie&amp;w</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide View Toolbar (Alt+W)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+W</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_togglePosition</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Camera Position</string>
+        </property>
+        <property name="menuText">
+            <string>Camera &amp;Position</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Camera Position Toolbar (Alt+P)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+P</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleOpenSave</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Open/Save</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Open/Save</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Open/Save Toolbar (Alt+O)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+O</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_videoFileOpen</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>fileopen</iconset>
+        </property>
+        <property name="text">
+            <string>Open Video</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Open Video</string>
+        </property>
+        <property name="toolTip">
+            <string>Open File Used for Video Display (Ctrl+V)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+V</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_videoStart</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>videoPlay.png</iconset>
+        </property>
+        <property name="text">
+            <string>Start</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Start</string>
+        </property>
+        <property name="toolTip">
+            <string>Start Playing (Ctrl+Alt+S)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Alt+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_videoStop</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>videoStop.png</iconset>
+        </property>
+        <property name="text">
+            <string>Stop</string>
+        </property>
+        <property name="menuText">
+            <string>S&amp;top</string>
+        </property>
+        <property name="toolTip">
+            <string>Stop Playing (Ctrl+Alt+X)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Alt+X</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_videoPause</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>videoPause.png</iconset>
+        </property>
+        <property name="text">
+            <string>Pause</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Pause</string>
+        </property>
+        <property name="toolTip">
+            <string>Pause Playing (Ctrl+Shift+P)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Shift+P</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_videoCapture</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>videoCapture.png</iconset>
+        </property>
+        <property name="text">
+            <string>Capture Every Frame</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Capture Every Frame</string>
+        </property>
+        <property name="toolTip">
+            <string>Capture Every Frame (Ctrl+Alt+C)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Alt+C</string>
+        </property>
+    </action>
+    <actiongroup>
+        <property name="name">
+            <cstring>actionGroup_videoFwdBwd</cstring>
+        </property>
+        <property name="text">
+            <string>ActionGroup</string>
+        </property>
+        <property name="usesDropDown">
+            <bool>false</bool>
+        </property>
+        <action>
+            <property name="name">
+                <cstring>action_videoForward</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="on">
+                <bool>true</bool>
+            </property>
+            <property name="iconSet">
+                <iconset>videoFwd.png</iconset>
+            </property>
+            <property name="text">
+                <string>Play Forward</string>
+            </property>
+            <property name="menuText">
+                <string>Play &amp;Forward</string>
+            </property>
+            <property name="toolTip">
+                <string>Play Forward (Ctrl+Alt+F)</string>
+            </property>
+            <property name="accel">
+                <string>Ctrl+Alt+F</string>
+            </property>
+        </action>
+        <action>
+            <property name="name">
+                <cstring>action_videoBackward</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="iconSet">
+                <iconset>videoBwd.png</iconset>
+            </property>
+            <property name="text">
+                <string>Play Backward</string>
+            </property>
+            <property name="menuText">
+                <string>Play &amp;Backward</string>
+            </property>
+            <property name="toolTip">
+                <string>Play Backward (Ctrl+Alt+B)</string>
+            </property>
+            <property name="accel">
+                <string>Ctrl+Alt+B</string>
+            </property>
+        </action>
+    </actiongroup>
+    <action>
+        <property name="name">
+            <cstring>action_toggleVideoControls</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Video Controls</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Video Controls</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Video Controls Toolbar (Alt+V)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+V</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleVideoSettings</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Video Settings</string>
+        </property>
+        <property name="menuText">
+            <string>Video &amp;Settings</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Video Settings Toolbar (Alt+S)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_colorForm</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>color.png</iconset>
+        </property>
+        <property name="text">
+            <string>Color Dialog</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Color Dialog</string>
+        </property>
+        <property name="toolTip">
+            <string>Opens the Color Dialog (Ctrl+C)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+C</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleObjects</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>ell-sph.png</iconset>
+        </property>
+        <property name="text">
+            <string>Item Representation</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Item Representation</string>
+        </property>
+        <property name="toolTip">
+            <string>Toggles the Item Representation between Ellipsoid and Spherocylinder (Shift+I)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+I</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleObjectsChangable</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>enable.png</iconset>
+        </property>
+        <property name="text">
+            <string>enable</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Enable</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable Item Representation Switch (Shift+E)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+E</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_objectParams</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>table.png</iconset>
+        </property>
+        <property name="text">
+            <string>Open Models Table</string>
+        </property>
+        <property name="menuText">
+            <string>Open &amp;Models Table</string>
+        </property>
+        <property name="toolTip">
+            <string>Open Models Table (Shift+M)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+M</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleModel2</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Model 2</string>
+        </property>
+        <property name="menuText">
+            <string>Model &amp;2</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Model 2 Toolbar (Alt+2)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+2</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleLOD</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>lod.png</iconset>
+        </property>
+        <property name="text">
+            <string>Auto Level of Detail</string>
+        </property>
+        <property name="menuText">
+            <string>Auto &amp;Level of Detail</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Auto Adjustment of Level of Detail (Shift+L)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+L</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_openHist_1</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>openes named file</string>
+        </property>
+        <property name="menuText">
+            <string>.</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_openHist_2</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>openes named file</string>
+        </property>
+        <property name="menuText">
+            <string>.</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_openHist_3</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>openes named file</string>
+        </property>
+        <property name="menuText">
+            <string>.</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_openHist_4</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>openes named file</string>
+        </property>
+        <property name="menuText">
+            <string>.</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_saveHistogram</cstring>
+        </property>
+        <property name="text">
+            <string>Saves a histogram of all color indices to a file named FILENAME.hist. (Ctrl+H)</string>
+        </property>
+        <property name="menuText">
+            <string>Show Angular Distribution Histogram</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+H</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleBoundingBox</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>bbox.png</iconset>
+        </property>
+        <property name="text">
+            <string>Bounding Box</string>
+        </property>
+        <property name="menuText">
+            <string>Bounding Box</string>
+        </property>
+        <property name="toolTip">
+            <string>Enable/Disable Bounding Box (Shift+B)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+B</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleTreeView</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Tree Sidebar</string>
+        </property>
+        <property name="menuText">
+            <string>Tree Side&amp;bar</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Tree Sidebar (Alt+B)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+B</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleSliceWindow</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Slice Sidebar</string>
+        </property>
+        <property name="menuText">
+            <string>S&amp;lice Sidebar</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Slice Sidebar (Alt+L)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+L</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_toggleFps</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="on">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Fps/Run Benchmark</string>
+        </property>
+        <property name="menuText">
+            <string>Fps/&amp;Run Benchmark</string>
+        </property>
+        <property name="toolTip">
+            <string>Show/Hide Fps Toolbar (Alt+R)</string>
+        </property>
+        <property name="accel">
+            <string>Alt+R</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_povrayForm</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>povray_logo.png</iconset>
+        </property>
+        <property name="text">
+            <string>PovRay Export</string>
+        </property>
+        <property name="menuText">
+            <string>Pov&amp;Ray Export</string>
+        </property>
+        <property name="toolTip">
+            <string>Opens PovRay Export Form (Ctrl+R)</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+R</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_loadModelsFile</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>fileopen</iconset>
+        </property>
+        <property name="text">
+            <string>Load Models File</string>
+        </property>
+        <property name="menuText">
+            <string>Loa&amp;d Models File</string>
+        </property>
+        <property name="toolTip">
+            <string>Load Model Definitions from File (Shift+D)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+D</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_saveModelsFile</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>filesave</iconset>
+        </property>
+        <property name="text">
+            <string>Save Models File</string>
+        </property>
+        <property name="menuText">
+            <string>Sa&amp;ve Models File</string>
+        </property>
+        <property name="toolTip">
+            <string>Save Model Definitions to File (Shift+V)</string>
+        </property>
+        <property name="accel">
+            <string>Shift+V</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>action_translate</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="iconSet">
+            <iconset>translate.png</iconset>
+        </property>
+        <property name="text">
+            <string>Activate Translation</string>
+        </property>
+        <property name="menuText">
+            <string>Activate &amp;Translation</string>
+        </property>
+    </action>
+</actions>
+<includes>
+    <include location="local" impldecl="in implementation">mainform.includes.imp.h</include>
+    <include location="local" impldecl="in declaration">mainform.includes.dec.h</include>
+    <include location="local" impldecl="in implementation">mainform.ui.h</include>
+</includes>
+<variables>
+    <variable access="private">QStringList modelNames;</variable>
+    <variable access="private">QString lastModelSaveFolder;</variable>
+    <variable access="private">string modelsFile;</variable>
+    <variable access="private">bool saveAsActivcated;</variable>
+    <variable access="private">QTimer *saveTimer;</variable>
+    <variable access="private">bool showCalled;</variable>
+    <variable access="private">bool forceChangeColorization;</variable>
+    <variable access="private">double numberMeanFps;</variable>
+    <variable access="private">SSHDirectory *sshRoot;</variable>
+    <variable access="private">QString sshHost;</variable>
+    <variable access="private">QString sshUser;</variable>
+    <variable access="private">SSHForm *sshForm;</variable>
+    <variable access="private">QGridLayout *treeLayout;</variable>
+    <variable access="private">CnfFile *oldCnf;</variable>
+    <variable access="private">vector&lt;vector&lt;float&gt; &gt; *models;</variable>
+    <variable access="private">ModelsForm *modelsForm;</variable>
+    <variable access="private">vector&lt;int&gt; *modelType;</variable>
+    <variable access="private">QString lastSaveFolder;</variable>
+    <variable access="private">unsigned int captureCount;</variable>
+    <variable access="private">unsigned int videoNumDigits;</variable>
+    <variable access="private">vector&lt;vector&lt;float&gt; *&gt; *color;</variable>
+    <variable access="private">unsigned int videoCount;</variable>
+    <variable access="private">QString colorMap;</variable>
+    <variable access="private">QString cnfFile;</variable>
+    <variable access="private">Renderer *glWindow;</variable>
+    <variable access="private">QGridLayout *glLayout;</variable>
+    <variable access="private">int numMolecules;</variable>
+    <variable access="private">CnfFile *cnf;</variable>
+    <variable access="private">QTimer *qtTimer;</variable>
+    <variable access="private">unsigned int videoStartVal;</variable>
+    <variable access="private">unsigned int videoStopVal;</variable>
+    <variable access="private">unsigned int videoStepVal;</variable>
+    <variable access="private">bool blockUpdate;</variable>
+    <variable access="private">vector&lt;vector&lt;float&gt;*&gt; *middle;</variable>
+    <variable access="private">vector&lt;vector&lt;float&gt;*&gt; *rot;</variable>
+    <variable access="private">bool sliderUpdate;</variable>
+    <variable access="private">int oldValueDialY;</variable>
+    <variable access="private">AboutForm *aboutForm;</variable>
+    <variable access="private">bool saveAsPng;</variable>
+    <variable access="private">bool saveAsEps;</variable>
+    <variable access="private">SliceForm *sliceForm;</variable>
+    <variable access="private">ColorForm *colorForm;</variable>
+    <variable access="private">bool loadFirst;</variable>
+    <variable access="private">bool blockCnfChanged;</variable>
+    <variable access="private">bool videoStartPressed;</variable>
+    <variable access="private">bool videoSliderActive;</variable>
+    <variable access="private">DirectoryView *treeView;</variable>
+    <variable access="private">QDockWindow *treeWindow;</variable>
+    <variable access="private">QString openHist_1;</variable>
+    <variable access="private">QString openHist_2;</variable>
+    <variable access="private">QString openHist_3;</variable>
+    <variable access="private">QString openHist_4;</variable>
+    <variable access="private">QProcess *gnuplot;</variable>
+    <variable access="private">QDockWindow *sliceWindow;</variable>
+    <variable access="private">PovrayForm *povform;</variable>
+    <variable access="private">QPoint lastDragPoint;</variable>
+</variables>
+<signals>
+    <signal>cnfChanged(CnfFile*)</signal>
+    <signal>newTmpFile()</signal>
+</signals>
+<slots>
+    <slot>setDefaultModels()</slot>
+    <slot>addDummyModels( uint number )</slot>
+    <slot>setFormat( uint f )</slot>
+    <slot>formatChanged( int f )</slot>
+    <slot specifier="non virtual">show()</slot>
+    <slot access="private" specifier="non virtual">rescaleScene()</slot>
+    <slot access="private" specifier="non virtual">initializeScene()</slot>
+    <slot>buildScene( bool resetDistance, bool blockRepaint )</slot>
+    <slot>paintScene( bool resetDistance, bool blockRepaint )</slot>
+    <slot>fillModelVectors()</slot>
+    <slot>translate()</slot>
+    <slot access="private" specifier="non virtual">toggleObjectsChangable()</slot>
+    <slot access="private" specifier="non virtual">toggleObjects()</slot>
+    <slot>toggleFold()</slot>
+    <slot>changeColorisation()</slot>
+    <slot access="private" specifier="non virtual">lineEditFileOpenReturnPressed()</slot>
+    <slot access="private" specifier="non virtual">updateAlpha( int val )</slot>
+    <slot access="private" specifier="non virtual">updateBeta( int val )</slot>
+    <slot access="private" specifier="non virtual">updateGamma( int val )</slot>
+    <slot access="private" specifier="non virtual">toggleFullRender( bool state )</slot>
+    <slot access="private" specifier="non virtual">changeZoom()</slot>
+    <slot access="private" specifier="non virtual">updateZoom( int val )</slot>
+    <slot access="private" specifier="non virtual">toggleColormap( bool state )</slot>
+    <slot access="private" specifier="non virtual">toggleAxes( bool state )</slot>
+    <slot access="private" specifier="non virtual">toggleBoundingBox( bool state )</slot>
+    <slot access="private" specifier="non virtual">colorButtonX()</slot>
+    <slot access="private" specifier="non virtual">colorButtonY()</slot>
+    <slot access="private" specifier="non virtual">colorButtonZ()</slot>
+    <slot access="private" specifier="non virtual">toggleOptimized( bool state )</slot>
+    <slot access="private" specifier="non virtual">toggleLOD( bool state )</slot>
+    <slot access="private" specifier="non virtual">toggleSlice( bool state )</slot>
+    <slot access="private" specifier="non virtual">toggleSliceAction()</slot>
+    <slot access="private" specifier="non virtual">rotX( int newVal )</slot>
+    <slot access="private" specifier="non virtual">rotY( int newVal )</slot>
+    <slot access="private" specifier="non virtual">rotZ( int newVal )</slot>
+    <slot access="private" specifier="non virtual">rotXEnter()</slot>
+    <slot access="private" specifier="non virtual">rotYEnter()</slot>
+    <slot access="private" specifier="non virtual">rotZEnter()</slot>
+    <slot access="private" specifier="non virtual">rotAngleBoxesChanged()</slot>
+    <slot access="private" specifier="non virtual">togglePixel()</slot>
+    <slot access="private" specifier="non virtual">keepAspectRatio()</slot>
+    <slot access="private" specifier="non virtual">fileOpen()</slot>
+    <slot access="private" specifier="non virtual">fileSave()</slot>
+    <slot>startSnapshot()</slot>
+    <slot access="private" specifier="non virtual">fileSaveAs()</slot>
+    <slot access="private" specifier="non virtual">fileExit()</slot>
+    <slot access="private" specifier="non virtual">helpAbout()</slot>
+    <slot>openPovrayForm()</slot>
+    <slot access="private" specifier="non virtual">noFileFormat()</slot>
+    <slot>toggleFps()</slot>
+    <slot access="private" specifier="non virtual">toggleModel1()</slot>
+    <slot access="private" specifier="non virtual">toggleModel2()</slot>
+    <slot>toggleTreeView()</slot>
+    <slot>toggleSliceWindow()</slot>
+    <slot access="private" specifier="non virtual">toggleColor()</slot>
+    <slot access="private" specifier="non virtual">toggleView()</slot>
+    <slot access="private" specifier="non virtual">togglePosition()</slot>
+    <slot access="private" specifier="non virtual">toggleOpenSave()</slot>
+    <slot access="private" specifier="non virtual">toggleVideoControls()</slot>
+    <slot access="private" specifier="non virtual">toggleVideoSettings()</slot>
+    <slot access="private" specifier="non virtual">openColorForm()</slot>
+    <slot access="private" specifier="non virtual">videoFileOpen()</slot>
+    <slot access="private" specifier="non virtual">videoStart()</slot>
+    <slot access="private" specifier="non virtual">videoNextScene()</slot>
+    <slot access="private" specifier="non virtual">videoStop()</slot>
+    <slot access="private" specifier="non virtual">lineEditVideoFileReturnPressed()</slot>
+    <slot access="private" specifier="non virtual">videoPause( bool isOn )</slot>
+    <slot access="private" specifier="non virtual">videoSliderPressed()</slot>
+    <slot access="private" specifier="non virtual">videoSliderReleased()</slot>
+    <slot access="private" specifier="non virtual">videoSliderMoved( int newVal )</slot>
+    <slot access="private" specifier="non virtual">lineSizeChanged( int lineSize )</slot>
+    <slot>showModel1Ellipsoid( bool show )</slot>
+    <slot>showModel2Ellipsoid( bool show )</slot>
+    <slot>showModel1Spherocylinder( bool show )</slot>
+    <slot>showModel2Spherocylinder( bool show )</slot>
+    <slot>showModel1Spheroplatelet( bool show )</slot>
+    <slot>showModel2Spheroplatelet( bool show )</slot>
+    <slot>showModel1CutSphere( bool show )</slot>
+    <slot>showModel2CutSphere( bool show )</slot>
+    <slot>showModel1Eyelens( bool show )</slot>
+    <slot>showModel2Eyelens( bool show )</slot>
+    <slot>adjustModel1Toolbar( int index )</slot>
+    <slot>adjustModel2Toolbar( int index )</slot>
+    <slot>updateBoxCount()</slot>
+    <slot access="private" specifier="non virtual">updateTreeView( QStringList list )</slot>
+    <slot access="private" specifier="non virtual">waitSSH( bool status )</slot>
+    <slot access="private" specifier="non virtual">toolBarUnDocked( QDockWindow::Place p )</slot>
+    <slot access="private" specifier="non virtual">openModelsForm()</slot>
+    <slot>updateModelsLineEdits( bool blockRescale )</slot>
+    <slot access="private" specifier="non virtual">updateModelsVector()</slot>
+    <slot access="private" specifier="non virtual">slotKeyPress( int val )</slot>
+    <slot access="private" specifier="non virtual">dropInRenderArea( QString file )</slot>
+    <slot access="private" specifier="non virtual">openFileFromTreeView( QString file )</slot>
+    <slot access="private" specifier="non virtual">loadOpenHist_1()</slot>
+    <slot access="private" specifier="non virtual">loadOpenHist_2()</slot>
+    <slot access="private" specifier="non virtual">loadOpenHist_3()</slot>
+    <slot access="private" specifier="non virtual">loadOpenHist_4()</slot>
+    <slot access="private" specifier="non virtual">printHistogram()</slot>
+    <slot access="private" specifier="non virtual">updateFps( double newVal )</slot>
+    <slot>meanFps( double newVal, bool reset )</slot>
+    <slot>benchmark()</slot>
+    <slot>resetMeanFps()</slot>
+    <slot access="private" specifier="non virtual">setSSHValues()</slot>
+    <slot access="private" specifier="non virtual">initTreeWindow()</slot>
+    <slot>initSliceWindow()</slot>
+    <slot>refreshCurrentDir()</slot>
+    <slot>setModelsFile( string file )</slot>
+    <slot>loadModels()</slot>
+    <slot>setVideoParameters( string videoFile, int startValue, int stopValue, int stepValue, int digitsValue )</slot>
+    <slot>openModelsFile()</slot>
+    <slot>saveModelsFile()</slot>
+    <slot>updateTranslationBoxes( vector&lt;float&gt; vecTranslation )</slot>
+</slots>
+<functions>
+    <function access="private" specifier="non virtual">init()</function>
+    <function specifier="non virtual">setInputFiles( QString file, QString color )</function>
+    <function specifier="non virtual">setOnlyColormap( QString color )</function>
+    <function returnType="bool">newInputFile( QString newFile, bool reloadSameName )</function>
+    <function access="private" specifier="non virtual">setColorMap()</function>
+    <function access="private" specifier="non virtual">updateAngleBoxes( int x, int y, int z )</function>
+    <function access="private" specifier="non virtual">updateAngleBoxesRenderer()</function>
+    <function access="private" specifier="non virtual" returnType="QString">parseFilename( QString filename )</function>
+    <function access="private" specifier="non virtual">setButtonColor( QPushButton * button, QLineEdit * lineEdit, QDial * dial )</function>
+    <function access="private" specifier="non virtual" returnType="bool">getSaveFilename()</function>
+    <function access="protected" specifier="non virtual">closeEvent( QCloseEvent * )</function>
+    <function access="private" specifier="non virtual">enableVideoLineEdits( bool enabled )</function>
+    <function access="private" specifier="non virtual">videoCapture( QString captureFilename )</function>
+    <function access="private" specifier="non virtual">saveSettings()</function>
+    <function access="private" specifier="non virtual">loadSettings()</function>
+    <function access="private" specifier="non virtual">setToolbar( bool set, QToolBar * toolbar, QAction * action )</function>
+    <function access="private" specifier="non virtual">setConnections()</function>
+    <function access="private" specifier="non virtual">updateHistory( QString file )</function>
+    <function access="private" specifier="non virtual">setOpenHistText()</function>
+    <function access="private" specifier="non virtual">setOpenHistEnable()</function>
+    <function access="private" specifier="non virtual">updateOpenHist()</function>
+    <function access="private" specifier="non virtual">deleteHistogram( QString histFile )</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

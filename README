@@ -1,1 +1,14 @@
-A fork of the QMGA project
+Requirements include:
+- glut development library, e.g. freeglut-devel
+- qt library version 3 (plus headers, e.g. qt-devel)
+- a decent driver for your graphics card adapter 
+  (if the program is very slow even with small systems, 
+  this is probably the reason).
+
+Installation instructions:
+- change into the directory of the source code (e.g. qmga)
+- type qmake
+- a Makefile should be created by Qt
+- type make
+(- hope that no errors occur)
+- type ./qmga

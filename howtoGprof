@@ -1,0 +1,48 @@
+find configuration file
+
+  # locate qmake.conf
+
+find the .conf file that corresponds to the system
+
+...
+...
+...
+/usr/lib64/qt-3.3/mkspecs/linux-g++-64/qmake.conf
+...
+...
+...
+
+and edit it
+
+  # sudo nano -w /usr/lib64/qt-3.3/mkspecs/linux-g++-64/qmake.conf
+
+
+add:
+
+  -g -pg 
+
+to
+
+  QMAKE_CFLAGS_RELEASE = ...
+  QMAKE_CFLAGS_DEBUG   = ...
+
+  ...
+
+  QMAKE_LFLAGS_RELEASE = ...
+  QMAKE_LFLAGS_DEBUG   = ...
+
+save .conf file and exit editor
+
+  # make clean
+
+  # rm Makefile
+
+  # qmake
+
+  # make
+
+  # ./qmga ../testFiles/common/test-1.cnf
+
+  # gprof qmga gmon.out > myProfile
+
+this should be it.

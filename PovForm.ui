@@ -1,0 +1,143 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>PovrayForm</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>PovrayForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>499</width>
+            <height>527</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>PovrayForm</string>
+    </property>
+    <property name="icon">
+        <pixmap>mainform.png</pixmap>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QTextEdit" row="1" column="0">
+            <property name="name">
+                <cstring>textEdit_povray</cstring>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget" row="0" column="0">
+            <property name="name">
+                <cstring>layout36</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton_generate</cstring>
+                    </property>
+                    <property name="text">
+                        <string>generate</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton_save</cstring>
+                    </property>
+                    <property name="text">
+                        <string>save</string>
+                    </property>
+                </widget>
+                <widget class="QButtonGroup">
+                    <property name="name">
+                        <cstring>buttonGroup_template</cstring>
+                    </property>
+                    <property name="title">
+                        <string>template</string>
+                    </property>
+                    <property name="flat">
+                        <bool>false</bool>
+                    </property>
+                    <property name="selectedId" stdset="0">
+                        <number>0</number>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>radioButton_template_01</cstring>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </widget>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>radioButton_template_02</cstring>
+                            </property>
+                            <property name="text">
+                                <string>2</string>
+                            </property>
+                        </widget>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>radioButton_template_03</cstring>
+                            </property>
+                            <property name="text">
+                                <string>3</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer8</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>199</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+    </grid>
+</widget>
+<includes>
+    <include location="local" impldecl="in declaration">qtextedit.h</include>
+    <include location="local" impldecl="in declaration">qfile.h</include>
+    <include location="local" impldecl="in declaration">povrayform.includes.dec.h</include>
+    <include location="local" impldecl="in declaration">qfiledialog.h</include>
+    <include location="local" impldecl="in implementation">PovForm.ui.h</include>
+</includes>
+<forwards>
+    <forward>using mga::Molecule</forward>
+</forwards>
+<variables>
+    <variable access="private">Renderer *glWindow;</variable>
+    <variable access="private">CnfFile *cnf;</variable>
+    <variable access="private">vector&lt;vector&lt;double&gt; &gt; data;</variable>
+</variables>
+<slots>
+    <slot>save()</slot>
+    <slot>generate()</slot>
+    <slot>setParameter( CnfFile * c, Renderer * glw )</slot>
+</slots>
+<functions>
+    <function access="private" specifier="non virtual">init()</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
