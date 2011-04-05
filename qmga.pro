@@ -3,7 +3,7 @@ LANGUAGE	= C++
 
 CONFIG	+= qt warn_on release
 
-LIBS	+= -lglut
+LIBS	+= -lglut -lGLU
 
 INCLUDEPATH	+= -D_REENTRANT
 
